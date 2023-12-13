@@ -1,3 +1,27 @@
+--Tabla sucursal
+CREATE TABLE Sucursal (
+	sucursal_id INTEGER PRIMARY KEY,
+	nombre TEXT NOT NULL,
+	direcion Text,
+	telefono TEXT
+);
+
+--Tabla cliente
+CREATE TABLE Cliente (
+	cliente_id INTEGER PRIMARY KEY,
+	nombre TEXT NOT NULL,
+	telefono TEXT,
+);
+--Tabla Orden
+CREATE TABLE Orden (
+	orden_id INTEGER PRIMARY KEY,
+	cliente_id INTEGER,
+	sucursal_id INTEGER NOT NULL,
+	fecha DATE NOT NULL,
+	total REAL NOT NULL,
+	FOREIGN KEY (sucursal_id) REFERENCES(sucursal_id)
+);
+
 );
 
 --Tabla categoria
