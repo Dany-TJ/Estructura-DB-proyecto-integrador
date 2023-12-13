@@ -22,8 +22,6 @@ CREATE TABLE Orden (
 	FOREIGN KEY (sucursal_id) REFERENCES(sucursal_id)
 );
 
-);
-
 --Tabla categoria
 CREATE TABLE Categoria (
 	categoria_id INTEGER PRIMARY KEY,
