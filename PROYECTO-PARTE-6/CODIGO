@@ -1,0 +1,40 @@
+--CODIGO DE COSULTAS EN POSTGRES
+
+--Precio promedio de los productos en cada categoría
+SELECT 
+    c.nombre AS categoria,
+    AVG(p.precio_unitario) AS precio_promedio
+FROM Productos p
+JOIN Categorías c ON p.categoria_id = c.id
+GROUP BY c.nombre;
+
+--Cantidad total de productos en stock por categoría
+SELECT 
+    c.nombre AS categoria,
+    SUM(s.cantidad) AS cantidad_total
+FROM Stocks s
+JOIN Productos p ON s.Producto_Id = p.id
+JOIN Categorías c ON p.categoria_id = c.id
+GROUP BY c.nombre;
+
+--Total de ventas por sucursal
+SELECT 
+    s.nombre AS sucursal,
+    SUM(i.monto_venta) AS total_ventas
+FROM Sucursales s
+JOIN Órdenes o ON s.id = o.sucursal_id
+JOIN Items i ON o.id = i.orden_id
+GROUP BY s.nombre;
+
+--Cliente que ha realizado el mayor monto de compras
+SELECT 
+    c.nombre AS cliente,
+    SUM(i.monto_venta) AS total_compras
+FROM Clientes c
+JOIN Órdenes o ON c.id = o.cliente_id
+JOIN Items i ON o.id = i.orden_id
+GROUP BY c.nombre
+ORDER BY total_compras DESC
+LIMIT 1;
+
+
