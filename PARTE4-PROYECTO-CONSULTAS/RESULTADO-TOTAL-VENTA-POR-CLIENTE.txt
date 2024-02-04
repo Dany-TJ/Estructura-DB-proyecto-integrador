@@ -1,0 +1,5 @@
+|cliente|total_ventas|
+|-------|------------|
+|Pedro  |47.685      |
+|María  |19.355      |
+|Juan   |2.315       |
